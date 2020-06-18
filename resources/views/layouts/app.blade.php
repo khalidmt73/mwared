@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html  dir="rtl"  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'mwared') }}</title>
+    <title>موارد</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                   موارد
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -41,11 +41,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('الدخول') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('التسجيل') }}</a>
                                 </li>
                             @endif
                         @else
@@ -58,7 +58,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('خروج') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -71,10 +71,43 @@
                 </div>
             </div>
         </nav>
+        @auth
+        <div class="container">
+            <div class="row text-right">
+                <div class="col-md-4 py-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="/decision">القرارات</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/employee">الموظف</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/employer">الجهات</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/jobTitle">الوظائف</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/employerOther">الجهات التكليف</a>
+                        </li>
+                    </ul>
+                </div>
 
+            <div class="col-md-8">
+            <main class="py-4">
+            @yield('content')
+        </main>
+            </div>
+
+    </div>
+    </div>
+        </div>
+        @else
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+        @endauth
+
 </body>
 </html>
