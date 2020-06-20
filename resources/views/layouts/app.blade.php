@@ -73,23 +73,24 @@
         </nav>
         @auth
         <div class="container">
+       
             <div class="row text-right">
                 <div class="col-md-4 py-4">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="/decision">القرارات</a>
+                            <a href="{{route('decision.index')}}">القرارات</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/employee">الموظف</a>
+                            <a href="{{route('employee.index')}}">الموظف</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/employer">الجهات</a>
+                            <a href="{{route('employer.index')}}">الجهات</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/jobTitle">الوظائف</a>
+                            <a href="{{route('jobTitle.index')}}">الوظائف</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/employerOther">الجهات التكليف</a>
+                            <a href="{{route('employerOther.index')}}">جهات التكليف</a>
                         </li>
                     </ul>
                 </div>

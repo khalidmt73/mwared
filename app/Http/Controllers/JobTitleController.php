@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\JobTitle;
+use App\Http\Requests\JobTitleRequest;
 
-class JopTitleController extends Controller
+
+
+class JobTitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,8 @@ class JopTitleController extends Controller
      */
     public function index()
     {
-        //
+        return view('jobTitles.index')->with('jopTitles',JobTitle::all());
+
     }
 
     /**
@@ -23,7 +28,8 @@ class JopTitleController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobTitles.create');
+
     }
 
     /**
@@ -32,9 +38,11 @@ class JopTitleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobTitleRequest $request)
     {
-        //
+        JobTitle::create($request->all());
+        session()->flash('success','تمت إضافة السجل');
+        return redirect (route('jobTitle.index'));
     }
 
     /**
@@ -54,9 +62,9 @@ class JopTitleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(JobTitle $jobTitle)
     {
-        //
+        return view('jobTitles.create')->with('jobTitle',$jobTitle);
     }
 
     /**
@@ -66,9 +74,14 @@ class JopTitleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, JobTitle $jobTitle)
     {
-        //
+        $jobTitle->update([
+            'jobTitle' => $request-> jobTitle
+     ]);
+
+        session()->flash('success','تم تعديل الجهة');
+        return redirect (route('jobTitle.index'));
     }
 
     /**
@@ -77,8 +90,10 @@ class JopTitleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(JobTitle $jobTitle)
     {
-        //
+        $jobTitle->delete();
+        session()->flash('delete','تم حذف الجهة');
+        return redirect (route('jobTitle.index'));
     }
 }

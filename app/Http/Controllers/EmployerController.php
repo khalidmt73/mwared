@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Employer;
+use App\Http\Requests\EmployerRequest;
 
 class EmployerController extends Controller
 {
@@ -13,7 +15,7 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        //
+        return view('employers.index')->with('employers',Employer::all());
     }
 
     /**
@@ -23,7 +25,7 @@ class EmployerController extends Controller
      */
     public function create()
     {
-        //
+        return view('employers.create');
     }
 
     /**
@@ -32,9 +34,11 @@ class EmployerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployerRequest $request)
     {
-        //
+        Employer::create($request->all());
+        session()->flash('success','تمت إضافة السجل');
+        return redirect (route('employer.index'));
     }
 
     /**
@@ -54,9 +58,9 @@ class EmployerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employer $employer)
     {
-        //
+        return view('employers.create')->with('employer',$employer);
     }
 
     /**
@@ -66,9 +70,14 @@ class EmployerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employer $employer)
     {
-        //
+        $employer->update([
+                'employer' => $request-> employer
+        ]);
+
+        session()->flash('success','تم تعديل الجهة');
+        return redirect (route('employer.index'));
     }
 
     /**
@@ -77,8 +86,11 @@ class EmployerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employer $employer)
     {
-        //
+        $employer->delete();
+        session()->flash('delete','تم حذف الجهة');
+        return redirect (route('employer.index'));
+        
     }
 }

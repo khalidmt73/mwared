@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-right" >
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+
+            <div class="card card-default">
                 <div  class="card-header">لوحة التحكم</div>
 
                 <div class="card-body">
@@ -17,7 +15,5 @@
                     تسجيل دخول!
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+       
 @endsection

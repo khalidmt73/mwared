@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('/decision','DecisionController');
+Route::resource('/employee','EmployeeController');
+Route::resource('/employerOther','EmployerOtherController');
+Route::resource('/employer','EmployerController');
+Route::resource('/jobTitle','JobTitleController');
+
 
 Auth::routes();
 

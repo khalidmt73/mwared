@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\EmployerOther;
+use App\Http\Requests\EmployerOtherRequest;
 
 class EmployerOtherController extends Controller
 {
@@ -13,7 +15,8 @@ class EmployerOtherController extends Controller
      */
     public function index()
     {
-        //
+        return view('employerOthers.index')->with('employerOthers',EmployerOther::all());
+
     }
 
     /**
@@ -23,7 +26,8 @@ class EmployerOtherController extends Controller
      */
     public function create()
     {
-        //
+        return view('employerOthers.create');
+
     }
 
     /**
@@ -32,9 +36,11 @@ class EmployerOtherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployerOtherRequest $request)
     {
-        //
+        EmployerOther::create($request->all());
+        session()->flash('success','تمت إضافة السجل');
+        return redirect (route('employerOther.index'));
     }
 
     /**
@@ -54,9 +60,9 @@ class EmployerOtherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(EmployerOther $employerOther)
     {
-        //
+        return view('employerOthers.create')->with('employerOther',$employerOther);
     }
 
     /**
@@ -66,9 +72,15 @@ class EmployerOtherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, EmployerOther $employerOther)
     {
-        //
+        $employerOther->update([
+            'employerOther' => $request-> employerOther
+    ]);
+
+    session()->flash('success','تم تعديل الجهة');
+    return redirect (route('employerOther.index'));
+
     }
 
     /**
@@ -77,8 +89,10 @@ class EmployerOtherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(EmployerOther $employerOther)
     {
-        //
+        $employerOther->delete();
+        session()->flash('delete','تم حذف الجهة');
+        return redirect (route('employerOther.index'));
     }
 }

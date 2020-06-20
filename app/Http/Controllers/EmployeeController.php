@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Employee;
+use App\Http\Requests\EmployeeRequest;
+
 
 class EmployeeController extends Controller
 {
@@ -11,9 +14,10 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Employee $employee)
     {
-        //
+        return view('employees.index')->with('employees',Employee::all());
+
     }
 
     /**
@@ -23,7 +27,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
@@ -32,9 +36,11 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        //
+        Employee::create($request->all());
+        session()->flash('success','تمت إضافة السجل');
+        return redirect (route('employee.index'));
     }
 
     /**
@@ -54,9 +60,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        //
+        return view('employees.create')->with('employee',$employee);
+
     }
 
     /**
@@ -66,9 +73,14 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        $employee->update([
+            'employee' => $request-> employee
+    ]);
+
+    session()->flash('success','تم تعديل الجهة');
+    return redirect (route('employee.index'));
     }
 
     /**
