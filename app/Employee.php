@@ -3,21 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use\App\Employer;
-use\App\JobTitle;
+use \App\Employer;
+use \App\JobTitle;
 
 class Employee extends Model
 {
-    protected $fillable =['idEmp','nameEmp','idNational','jobTitle_id','employer_id'];
+    protected $fillable = ['idEmp', 'nameEmp', 'idNational'];
 
-    public function employer(){
+    public function employer()
+    {
 
-        return $this->belongsTo(Employer::class);
+        return $this->belongsTo(Employer::class, 'employer_id');
     }
 
-    public function jobTitle(){
+    public function jobTitle()
+    {
 
-        return $this->belongsTo(JobTitle::class);
+        return $this->belongsTo(JobTitle::class, 'jobTitle_id');
     }
-
 }

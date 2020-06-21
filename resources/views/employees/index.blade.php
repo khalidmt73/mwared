@@ -21,10 +21,9 @@
 
 
     <div class="col-4">
-        <div class="clearfix">
-            <a href="{{route('employee.create')}}" class="btn float-left btn-success"
-                style="margin-bottom: 6px;margin-top: 5px">اضف موظف </a>
-        </div>
+        <a href="{{route('employee.create')}}" class="btn float-left " style="color: #00cc00; font-size:30px">
+            <i class="fas fa-plus-circle ">
+            </i> </a>
     </div>
 </div>
 
@@ -63,11 +62,13 @@
                     <form class="float-left" action="{{ route('employee.destroy',$employee->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger btn-sm mr-2">حذف</button>
-                    </form>
+                        <button class="btn btn-md mr-2" style="color:red">
+                            <li class="fa fa-trash"></li> حذف
+                        </button> </form>
 
-                    <a href="{{ route('employee.edit',$employee->id) }}"
-                        class="btn btn-primary float-left btn-sm">تعديل</a>
+                    <a href="{{ route('employee.edit',$employee->id) }}" class="btn float-left btn-md " class="btn btn-md float-left " style="color:blue">
+                        <li class="fa fa-edit"></li> تعديل
+                    </a>
                 </td>
             </tr>
             @endforeach
