@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Employee;
+use App\Employer;
+use App\JobTitle;
+
 use App\Http\Requests\EmployeeRequest;
 
 
@@ -27,8 +30,10 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
-    }
+        return view('employees.create')
+            ->with('jobTitles',JobTitle::all())
+            ->with('employers',Employer::all());
+        }
 
     /**
      * Store a newly created resource in storage.
@@ -62,7 +67,11 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('employees.create')->with('employee',$employee);
+        return view('employees.create')
+        ->with('employee',$employee)
+        ->with('jobTitles',JobTitle::all())
+        ->with('employers',Employer::all());
+        ;
 
     }
 

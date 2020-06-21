@@ -16,7 +16,7 @@
                             <label for="employer">اسم الجهة</label>
                             <input type="text" name="employer" class="@error('employer')
                              is-invalid @enderror
-                            form-control" placeholder="اكتب اسم الجهة" 
+                            form-control" placeholder="اكتب اسم الجهة"
                             value = " {{ isset($employer) ? $employer->employer : '' }} "
                             >
                             @error('employer')
@@ -24,16 +24,16 @@
                                     {{ $message }}
                                 </div>
                             @enderror
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-success mt-3">
                                 {{ isset($employer) ? "تعديل" : "اضافة" }}
                                 </button>
                             </div>
-                        </div>
 
                     </form>
                 </div>
 
             </div>
-       
+
 @endsection

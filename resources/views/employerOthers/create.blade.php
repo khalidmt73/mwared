@@ -16,7 +16,7 @@
                             <label for="employerOther">اسم الجهة التكليف</label>
                             <input type="text" name="employerOther" class="@error('employerOther')
                              is-invalid @enderror
-                            form-control" placeholder="اكتب اسم الجهة التكليف" 
+                            form-control" placeholder="اكتب اسم الجهة التكليف"
                             value = " {{ isset($employerOther) ? $employerOther->employerOther : '' }} "
                             >
                             @error('employerOther')
@@ -24,16 +24,16 @@
                                     {{ $message }}
                                 </div>
                             @enderror
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-success mt-3">
                                 {{ isset($employerOther) ? "تعديل" : "اضافة" }}
                                 </button>
                             </div>
-                        </div>
 
                     </form>
                 </div>
 
             </div>
-       
+
 @endsection

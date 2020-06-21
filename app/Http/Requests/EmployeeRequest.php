@@ -24,7 +24,7 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            "idEmp"=> "required|unique:employees"   
+            "idEmp"=> "required|unique:employees"
 
         ];
     }
