@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use App\Employee;
 use App\Employer;
 use App\JobTitle;
@@ -19,7 +20,8 @@ class EmployeeController extends Controller
      */
     public function index(Employee $employee)
     {
-        return view('employees.index')->with('employees',Employee::all());
+
+        return view('employees.index')->with('employees',Employee::paginate(5));
 
     }
 

@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-md-center">
-    <div class="col-4">
+
+<div class="row justify-content-md">
+    <div class="col-4 text-right">
+        <br /> <h5 class ="text-center">جهات التكليف والإعارة</h5>
     </div>
     <div class="col-4">
 
@@ -27,21 +29,22 @@
     </div>
 </div>
 
-<div class="card card-default">
-    <div class="card-header">جهات التكليف</div>
-    <table class="table">
-        <tbody>
+<table class="table text-center table-hover table-striped table-bordered table-sm" >
+<thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="text-right">الجهة</th>
+                </tr>
+            </thead>
+            <tbody >
             @foreach ($employerOthers as $employerOther)
-            <tr>
-                <td>
+            <tr >
+                <td class="text-right">
                     {{$employerOther->employerOther}}
-                </td>
 
-                <td>
                     <form class="float-left" action="{{ route('employerOther.destroy',$employerOther->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-md mr-2" style="color:red">
+                        <button class="btn btn-md mr-2 float-left" style="color:red">
                             <li class="fa fa-trash"></li> حذف
                         </button>
                     </form>
@@ -53,7 +56,9 @@
             @endforeach
         </tbody>
     </table>
+    <nav class="pagination pagination-md justify-content-center">
+      {{ $employerOthers->links() }}
+</nav>
 
-</div>
 
 @endsection

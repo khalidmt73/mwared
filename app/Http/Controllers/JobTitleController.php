@@ -17,7 +17,7 @@ class JobTitleController extends Controller
      */
     public function index()
     {
-        return view('jobTitles.index')->with('jopTitles',JobTitle::all());
+        return view('jobTitles.index')->with('jopTitles',JobTitle::paginate(5));
 
     }
 

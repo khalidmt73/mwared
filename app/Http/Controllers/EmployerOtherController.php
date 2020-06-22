@@ -13,9 +13,9 @@ class EmployerOtherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(EmployerOther $employerOther)
     {
-        return view('employerOthers.index')->with('employerOthers',EmployerOther::all());
+        return view('employerOthers.index')->with('employerOthers',EmployerOther::paginate(5));
 
     }
 

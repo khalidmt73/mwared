@@ -1,0 +1,27 @@
+
+.pagination  {color: black;}
+
+.pagination li a {color: black;}
+
+
+.pagination li a.active {
+    background-color: black;
+
+}
+
+ul.pagination li.active {
+    background-color:black;
+
+}
+ul.pagination li a:hover {
+    background-color: slategrey ;
+     color: black;
+     border-color: black
+
+    }
+
+.page-item.active .page-link{
+    background-color:#343a40;
+    border-color: black
+
+}

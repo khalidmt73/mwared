@@ -8,7 +8,7 @@ use \App\JobTitle;
 
 class Employee extends Model
 {
-    protected $fillable = ['idEmp', 'nameEmp', 'idNational'];
+    protected $fillable = ['idEmp', 'nameEmp', 'idNational','employer_id','jobTitle_id'];
 
     public function employer()
     {

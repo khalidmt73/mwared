@@ -20,6 +20,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/extra.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -85,7 +87,7 @@
         </nav>
 
         @auth
-        <div class="container">
+        <div class="container-xl" >
             <div class="row text-right">
                 <div class="col-md-4 py-4">
                     <ul class="list-group">

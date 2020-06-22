@@ -2,9 +2,10 @@
 
 @section('content')
 <div class="row justify-content-md-center">
-    <div class="col-4">
+<div class="col-2 text-right">
+        <br /> <h5 class ="text-center">الوظائف</h5>
     </div>
-    <div class="col-4">
+    <div class="col-7">
 
         @if (session()->has('success'))
         <div class="alert alert-success text-center">
@@ -18,7 +19,7 @@
         @endif
 
     </div>
-    <div class="col-4">
+    <div class="col-3">
         <a href="{{route('jobTitle.create')}}" class="btn float-left " style="color: #00cc00; font-size:30px">
             <i class="fas fa-plus-circle ">
             </i> </a>
@@ -26,17 +27,19 @@
     </div>
 </div>
 
-<div class="card card-default">
-    <div class="card-header">الوظائف</div>
-    <table class="table">
-        <tbody>
+
+<table class="table table-hover table-striped table-bordered table-sm" >
+<thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="text-right">الوظيفة</th>
+                </tr>
+            </thead>
+            <tbody >
             @foreach ($jopTitles as $jobTitle)
             <tr>
-                <td>
+                <td class="text-right">
                     {{$jobTitle->jobTitle}}
-                </td>
 
-                <td>
                     <form class="float-left" action="{{ route('jobTitle.destroy',$jobTitle->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -53,7 +56,9 @@
             @endforeach
         </tbody>
     </table>
+    <nav class="pagination pagination-md justify-content-center">
+      {{ $jopTitles->links() }}
+</nav>
 
-</div>
 
 @endsection

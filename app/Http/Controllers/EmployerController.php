@@ -15,7 +15,7 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        return view('employers.index')->with('employers',Employer::all());
+        return view('employers.index')->with('employers',Employer::paginate(5));
     }
 
     /**
@@ -91,6 +91,6 @@ class EmployerController extends Controller
         $employer->delete();
         session()->flash('delete','تم حذف الجهة');
         return redirect (route('employer.index'));
-        
+
     }
 }
