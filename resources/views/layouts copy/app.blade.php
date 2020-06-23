@@ -91,12 +91,10 @@
             <div class="row text-right">
                 <div class="col-md-4 py-4">
                     <ul class="list-group">
-                     @if (Auth::user()->role ==1)
                         <li class="list-group-item">
                             <a href="{{route('decision.index')}}">القرارات</a>
                         </li>
-                        @endif
-                                                <li class="list-group-item">
+                        <li class="list-group-item">
                             <a href="{{route('employee.index')}}">الموظف</a>
                         </li>
                         <li class="list-group-item">

@@ -13,15 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {return view('welcome');});
+
+
+
+
+Route::group(['middleware' => 'admin' ], function() {
+
+    Route::resource('/decision', 'DecisionController');
+
 });
-Route::resource('/decision', 'DecisionController');
-Route::resource('/employee', 'EmployeeController');
-Route::resource('/employerOther', 'EmployerOtherController');
-Route::resource('/employer', 'EmployerController');
-Route::resource('/jobTitle', 'JobTitleController');
 
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::resource('/employee', 'EmployeeController');
+    Route::resource('/employerOther', 'EmployerOtherController');
+    Route::resource('/employer', 'EmployerController');
+    Route::resource('/jobTitle', 'JobTitleController');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/noAdmin', 'HomeController@noAdmin');
+
+});
+
+
+  Auth::routes();
