@@ -8,13 +8,28 @@ body {
 
 .sidebar {
     height:100vh;
-    background: #343a40;
+    background-color: #343a40;
     background-position:center ;
     background-repeat:center ;
     background-size:cover ;
     box-shadow: 5px 7px 25px #999;
 }
 
+
+.sidebar-link {
+    transition: all .4s;
+}
+
+.sidebar-link:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+
+.current {
+    background-color: #444;
+    border-radius: 1px;
+}
 
 
 

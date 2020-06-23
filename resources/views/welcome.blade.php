@@ -49,12 +49,27 @@
                     </div>
                     <ul class="navbar-nav flex-column">
                         <li class="nav-item">
-                        <a href="#" class="nav-link text-white">
+                        <a href="#" class="nav-link text-white p-3 mb-2 current">
                             <i class="fas fa-home text-light fa-lg mr-3"></i>
                             لوحة التحكم</a>
                         </li>
-                    </ul>
+                        <li class="nav-item">
+                        <a href="#" class="nav-link text-white p-3 mb-2">
+                            <i class="fas fa-cog text-light fa-lg mr-3"></i>
+                            الاعدادات</a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="#" class="nav-link text-white p-3 mb-2">
+                            <i class="fas fa-exchange-alt text-light fa-lg mr-3"></i>
+                           النقل والتكليف</a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="#" class="nav-link text-white p-3 mb-2">
+                            <i class="fas fa-plane-departure text-light fa-lg mr-3"></i>
+                           الإجازات</a>
+                        </li>
 
+                    </ul>
                 </div>
                     <!-- end sidebar -->
 
