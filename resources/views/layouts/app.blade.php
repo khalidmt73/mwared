@@ -87,7 +87,7 @@
         </nav>
 
         @auth
-        <div class="container-xl" >
+        <div class="container-xl">
             <div class="row text-right">
                 <div class="col-md-4 py-4">
                     <ul class="list-group">
