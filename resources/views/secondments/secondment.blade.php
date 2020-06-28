@@ -5,6 +5,7 @@
 <div class="container-fluid text-justify border p-3">
     <h6 class="text-center">قرار إداري</h6>
     <br />
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -17,11 +18,11 @@
         </thead>
         <tbody>
             <tr>
-                <td>هشام محمد البراك</td>
-                <td>1008591404</td>
-                <td>أستاذ مساعد</td>
-                <td>الاقتصاد والعلوم الإدارية</td>
-                <td>جامعة الفيصل</td>
+                <td>{{ $datas['name'] }}</td>
+                <td>{{ $datas['idNat'] }}</td>
+                <td>{{ $datas['jobTitle'] }}</td>
+                <td>{{ $datas['employer'] }}</td>
+                <td>{{ $datas['other'] }}</td>
             </tr>
     </table>
     <span>
@@ -32,7 +33,7 @@
     </span>
     <div class="form-group mx-sm-3 mb-2">
         - وبناءً على خطاب
-        <input type="text" class="" id="noq" placeholder="">
+        <input type="text" class="" value=" " id="noq" placeholder="">
         رقم
         <input type="text" class="" id="noq" placeholder="">
         وتاريخ

@@ -27,6 +27,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/secondment', 'SecondmentController');
+    Route::POST('/secondmentForm', 'SecondmentController@secondment')->name('secondmentForm');
     Route::resource('/employee', 'EmployeeController');
     Route::resource('/employerOther', 'EmployerOtherController');
     Route::resource('/employer', 'EmployerController');

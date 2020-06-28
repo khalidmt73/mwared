@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Secondment;
+use App\EmployerOther;
+use App\Employee;
+use App\Employer;
+use App\JobTitle;
+
 use Illuminate\Http\Request;
 
 class SecondmentController extends Controller
@@ -13,7 +19,35 @@ class SecondmentController extends Controller
      */
     public function index()
     {
-        return view('secondment.index');
+        return view('secondments.form')->with('employer_others', EmployerOther::all());
+    }
+
+    public function secondment(Request $request)
+    {
+        $idEmp = $request->idEmp;
+        $employerOther = $request->employerOther;
+
+
+        $dataEmp  = Employee::where('idEmp', $idEmp)->first();
+        $name = $dataEmp->nameEmp;
+        $idNat = $dataEmp->idNational;
+
+        $job =  $dataEmp->jobTitle_id;
+        $emp = $dataEmp->employer_id;
+
+        $obTitleWhere  = JobTitle::where('id', $job)->first();
+        $employerWhere = Employer::where('id', $emp)->first();
+        $otherWhere    = EmployerOther::where('id', $employerOther)->first();
+
+        $jobTitle      = $obTitleWhere->jobTitle;
+        $employer      = $employerWhere->employer;
+        $other = $otherWhere->employerOther;
+
+        $datas = ["name" => $name, "idNat" => $idNat, "jobTitle" => $jobTitle, "employer" => $employer, "other" => $other];
+        //dd($datas);        exit;
+        return view('secondments.secondment')
+            ->with('dataOne', $request)
+            ->with('datas', $datas);
     }
 
     /**
