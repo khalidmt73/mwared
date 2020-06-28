@@ -2,12 +2,8 @@
 
 @section('content')
 
-            <div class="card">
-                <div  class="card-header">القرارات</div>
+<div class="container-fluid text-justify border p-3">
+    No
+</div>
 
-                <div class="card-body">
-                   القرارات
-                </div>
-            </div>
-       
 @endsection

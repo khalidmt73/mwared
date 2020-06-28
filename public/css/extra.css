@@ -1,37 +1,44 @@
-body {
-    background-color:#eee;
+
+ .profile img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
-.bottom-border{
-    border-bottom: 1px groove #eee;
+.content{
+  width:50%;
+  margin-top: 20px;
 }
 
-.sidebar {
-    height:100vh;
-    background-color: #343a40;
-    background-position:center ;
-    background-repeat:center ;
-    background-size:cover ;
-    box-shadow: 5px 7px 25px #999;
+.card-header{
+background-color: #8d9092;
+font-weight: 900;
+font-size: 16px;
+color: #fff;
+
+}
+thead{
+ background-color: #8d9092;
+ text-align: center;
+ color: #fff;
+}
+table{
+text-align: center;
 }
 
+.add{
+  color: #676869;
+  font-size: 35px;
+  font-weight: 900;
 
-.sidebar-link {
-    transition: all .4s;
+}
+.headTable{
+  color: #676869;
+  font-size: 18px;
+  font-weight: 900;
 }
 
-.sidebar-link:hover {
-    background-color: #444;
-    border-radius: 5px;
-}
-
-
-.current {
-    background-color: #444;
-    border-radius: 1px;
-}
-
-
+/* ------------------------------- */
 
 
 
@@ -57,7 +64,46 @@ ul.pagination li a:hover {
     }
 
 .page-item.active .page-link{
-    background-color:#343a40;
+    background-color: #919aa0;
     border-color: black
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

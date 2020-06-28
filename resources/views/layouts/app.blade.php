@@ -1,133 +1,100 @@
 <!doctype html>
-<html dir="rtl" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html dir="rtl" lang="ar" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="title icon" href="{{ asset('/image/title-img.png') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <!-- CSRF Token -->
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>موارد</title>
-
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/extra.css') }}" rel="stylesheet">
-
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="col col-2 text-right">
-            </div>
-            <div class="col col-1 text-right">
-                <a class="navbar-brand " href="{{ url('/') }}">
-                    <img src="{{ asset('image/logo.jpg') }}" height="80px" width="60px" />
-                </a>
-            </div>
-            <div class="col col-3 text-right">
-                <br />
-                <h6>جامعة الإمام محمد بن سعود</h6>
-                <h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الموارد البشرية </h6>
-            </div>
-            <div class="col text-right">
-                <br />
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-right  border">
+        <a class="navbar-brand pr-3" href="#">
+            <img class="" src="{{ asset('image/logo.jpg') }}" height="60px" width="40px" />
+            <span class="mr-3">الموارد البشرية</span>
 
-                    </ul>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('الدخول') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('التسجيل') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown ">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo01">
+            @if (Auth::user())
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+            <ul class="navbar-nav ">
+                <li class="nav-item dropdown p-1">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cog fa-md"></i> تهيئة البيانات</a>
+                    <div class="dropdown-menu text-right">
+                        <a class="dropdown-item" href="{{route('employee.index')}}">الموظف</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('employer.index')}}">الجهات</a>
+                        <a class="dropdown-item" href="{{route('jobTitle.index')}}">الوظائف</a>
+                        <a class="dropdown-item" href="{{route('employerOther.index')}}">جهات التكليف</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown p-1">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-file-alt fa-md"></i> القرارات</a>
+                    <div class="dropdown-menu text-right">
+                        <a class="dropdown-item" href="{{route('secondment.index')}}">الاعارة</a>
+                        <a class="dropdown-item" href="{{route('decision.index')}}">التكليف</a>
+                        <a class="dropdown-item" href="{{route('decision.index')}}">الاجازات</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item profile">
+                    <a class="nav-link" href="#">
+                        <img src="{{ asset('/image/admin.jpg')}}" alt="" />
+                        <span class="caret">{{ Auth::user()->name }}</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ">
+                <li class="nav-item">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('خروج') }}
-                                </a>
+                        {{ __('خروج') }}
+                        <i class="fas fa-sign-out-alt text-danger fa-lg"></i>
+                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @auth
-        <div class="container-xl">
-            <div class="row text-right">
-                <div class="col-md-4 py-4">
-                    <ul class="list-group">
-                     @if (Auth::user()->role ==1)
-                        <li class="list-group-item">
-                            <a href="{{route('decision.index')}}">القرارات</a>
-                        </li>
-                        @endif
-                                                <li class="list-group-item">
-                            <a href="{{route('employee.index')}}">الموظف</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{{route('employer.index')}}">الجهات</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{{route('jobTitle.index')}}">الوظائف</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{{route('employerOther.index')}}">جهات التكليف</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-8">
-                    <main class="py-4">
-                        @yield('content')
-                    </main>
-                </div>
-
-            </div>
-
-            @else
-            <main class="py-4">
-                @yield('content')
-            </main>
-            @endauth
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+            @endif
         </div>
 
-    </div>
+    </nav>
 
+    <div class="container-fluid text-right w-75 content">
+        @auth
+
+        @yield('content')
+
+        @else
+        @yield('content')
+        @endauth
+    </div>
 </body>
 
 </html>

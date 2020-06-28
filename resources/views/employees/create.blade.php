@@ -17,8 +17,7 @@
                 <label for="idEmp">الرقم الوظيفي</label>
                 <input type="text" name="idEmp" class="@error('idEmp')
                              is-invalid @enderror
-                            form-control" placeholder="اكتب الرقم الوظيفي "
-                    value=" {{ isset($idEmp) ? $employee->idEmp : '' }} ">
+                            form-control" placeholder="اكتب الرقم الوظيفي " value=" {{ isset($idEmp) ? $employee->idEmp : '' }} ">
                 @error('employee')
                 <div class="alert alert-danger">
                     {{ $message }}
@@ -30,8 +29,7 @@
                 <label for="nameEmp">اسم الموظف</label>
                 <input type="text" name="nameEmp" class="@error('nameEmp')
                              is-invalid @enderror
-                            form-control" placeholder="اكتب اسم الموظف"
-                    value=" {{ isset($nameEmp) ? $employee->nameEmp : '' }} ">
+                            form-control" placeholder="اكتب اسم الموظف" value=" {{ isset($nameEmp) ? $employee->nameEmp : '' }} ">
                 @error('employee')
                 <div class="alert alert-danger">
                     {{ $message }}
@@ -43,8 +41,7 @@
                 <label for="idNational">رقم الهوية الوطنية</label>
                 <input type="text" name="idNational" class="@error('idNational')
                              is-invalid @enderror
-                            form-control" placeholder="اكتب رقم الهوية الوظنية"
-                    value=" {{ isset($idNational) ? $employee->idNational : '' }} ">
+                            form-control" placeholder="اكتب رقم الهوية الوظنية" value=" {{ isset($idNational) ? $employee->idNational : '' }} ">
                 @error('employee')
                 <div class="alert alert-danger">
                     {{ $message }}
@@ -55,18 +52,18 @@
             <div class="form-group">
                 <label for="jobTitle">الوظيفة</label>
                 <select class="form-control" name="jobTitle_id">
-                @foreach ($jobTitles as $jobTitle)
+                    @foreach ($jobTitles as $jobTitle)
                     <option value="{{$jobTitle->id}}"> {{$jobTitle->jobTitle}} </option>
-                @endforeach
+                    @endforeach
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="employer">جهة العمل</label>
-                <select class="form-control" name="employer_id" >
-                @foreach ($employers as $employer)
+                <select class="form-control" name="employer_id">
+                    @foreach ($employers as $employer)
                     <option value="{{$employer->id}}"> {{$employer->employer}} </option>
-                @endforeach
+                    @endforeach
                 </select>
             </div>
 

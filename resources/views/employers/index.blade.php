@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-md-center">
-    <div class="col-2 text-right">
+<div class="row">
+    <div class="col-2">
         <br />
-        <h5 class="text-center">الجهات</h5>
+        <h5 class="headTable">الجهات</h5>
     </div>
     <div class="col-7">
 
@@ -21,17 +21,18 @@
 
     </div>
     <div class="col-3">
-        <a href="{{route('employer.create')}}" class="btn float-left " style="color: #666666; font-size:40px">
-            <i class="fas fa-plus-circle ">
+        <a href="{{route('employer.create')}}" class="btn float-left">
+            <i class="fas fa-plus-circle add">
             </i> </a>
     </div>
 </div>
 
 
 <table class="table table-hover table-striped table-sm">
-    <thead class="thead-dark">
+    <thead>
         <tr>
-            <th scope="col" class="text-right">الجهة</th>
+            <th scope="col">الجهة</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -39,7 +40,8 @@
         <tr>
             <td>
                 {{$employer->employer}}
-
+            </td>
+            <td>
                 <form class="float-left" action="{{ route('employer.destroy',$employer->id) }}" method="POST">
                     @csrf
                     @method('DELETE')

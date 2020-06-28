@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-md-center">
-    <div class="col-2 text-right">
+<div class="row">
+    <div class="col-2 ">
         <br />
-        <h5 class="text-center">الوظائف</h5>
+        <h5 class="headTable">الوظائف</h5>
     </div>
     <div class="col-7">
 
@@ -21,8 +21,8 @@
 
     </div>
     <div class="col-3">
-        <a href="{{route('jobTitle.create')}}" class="btn float-left " style="color: #666666; font-size:40px">
-            <i class="fas fa-plus-circle ">
+        <a href="{{route('jobTitle.create')}}" class="btn float-left">
+            <i class="fas fa-plus-circle add">
             </i> </a>
 
     </div>
@@ -30,17 +30,19 @@
 
 
 <table class="table table-hover table-striped table-bordered table-sm">
-    <thead class="thead-dark">
+    <thead>
         <tr>
-            <th scope="col" class="text-right">الوظيفة</th>
+            <th scope="col">الوظيفة</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         @foreach ($jopTitles as $jobTitle)
         <tr>
-            <td class="text-right">
+            <td>
                 {{$jobTitle->jobTitle}}
-
+            </td>
+            <td>
                 <form class="float-left" action="{{ route('jobTitle.destroy',$jobTitle->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
