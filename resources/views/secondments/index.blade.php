@@ -4,10 +4,10 @@
 <div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" href="{{route('secondment.index')}}">اضافة</a>
+            <a class="nav-link " href="{{route('secondment.search')}}">اضافة</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('secondment.view')}}">عرض</a>
+            <a class="nav-link active" href="{{route('secondment.index')}}">عرض</a>
         </li>
 
     </ul>
@@ -15,3 +15,5 @@
 <div class="container-fluid text-justify border p-3">
     View
 </div>
+
+@endsection

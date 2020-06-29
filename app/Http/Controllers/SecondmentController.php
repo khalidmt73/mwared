@@ -19,19 +19,13 @@ class SecondmentController extends Controller
      */
     public function index()
     {
+        return view('secondments.index');
+    }
+
+    public function search()
+    {
         return view('secondments.form')->with('employer_others', EmployerOther::all());
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function view()
-    {
-        return view('secondments.view');
-    }
-
 
     public function secondment(Request $request)
     {

@@ -56,7 +56,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-file-alt fa-md"></i> القرارات</a>
                     <div class="dropdown-menu text-right">
-                        <a class="dropdown-item" href="{{route('secondment.index')}}">الاعارة</a>
+                        <a class="dropdown-item" href="{{route('secondment.search')}}">الاعارة</a>
                         <a class="dropdown-item" href="{{route('decision.index')}}">التكليف</a>
                         <a class="dropdown-item" href="{{route('decision.index')}}">الاجازات</a>
                     </div>
