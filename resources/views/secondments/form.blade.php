@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{route('secondment.index')}}">اضافة</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('secondment.view')}}">عرض</a>
+        </li>
 
+    </ul>
+</div>
 <div class="container-fluid text-justify border p-3">
     <form action="{{route('secondmentForm')}}" method="POST">
         @csrf
@@ -15,19 +25,19 @@
                 @endforeach
             </select>
             <label for="" class="mr-3"> مدة الاعارة</label>
-            <select class="mr-3" name="year">
+            <select class="mr-1" name="year">
                 <option value="1">1</option>
                 <option value="2">2</option>
             </select>
-            <input class="form-check-input mr-4" type="radio" name="secondment" value="0">
-            <label class="form-check-label mr-5" for="exampleRadios3">
+            <input class="form-check-input mt-3 mr-4" checked type="radio" name="secondment" value="0">
+            <label class="form-check-label mt-3 mr-5" for="exampleRadios3">
                 جديد
             </label>
-            <input class="form-check-input mr-4" type="radio" name="secondment" value="1">
-            <label class="form-check-label mr-5" for="exampleRadios3">
+            <input class="form-check-input mt-3 mr-3" type="radio" name="secondment" value="1">
+            <label class="form-check-label mt-3 mr-5" for="exampleRadios3">
                 تجديد
             </label>
-            <button type="submit" class="btn btn-primary mr-5">بحث</button>
+            <button type="submit" class="btn btn-primary mr-5">اضافة</button>
 
         </div>
     </form>

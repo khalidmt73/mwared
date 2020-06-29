@@ -22,32 +22,52 @@ class SecondmentController extends Controller
         return view('secondments.form')->with('employer_others', EmployerOther::all());
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function view()
+    {
+        return view('secondments.view');
+    }
+
+
     public function secondment(Request $request)
     {
         $idEmp = $request->idEmp;
+
+        $year = $request->year;
+        $secondment = $request->secondment;
         $employerOther = $request->employerOther;
 
 
         $dataEmp  = Employee::where('idEmp', $idEmp)->first();
-        $name = $dataEmp->nameEmp;
-        $idNat = $dataEmp->idNational;
+        if (!empty($dataEmp)) {
+            $name = $dataEmp->nameEmp;
+            $idNat = $dataEmp->idNational;
 
-        $job =  $dataEmp->jobTitle_id;
-        $emp = $dataEmp->employer_id;
+            $job =  $dataEmp->jobTitle_id;
+            $emp = $dataEmp->employer_id;
 
-        $obTitleWhere  = JobTitle::where('id', $job)->first();
-        $employerWhere = Employer::where('id', $emp)->first();
-        $otherWhere    = EmployerOther::where('id', $employerOther)->first();
+            $obTitleWhere  = JobTitle::where('id', $job)->first();
+            $employerWhere = Employer::where('id', $emp)->first();
+            $otherWhere    = EmployerOther::where('id', $employerOther)->first();
 
-        $jobTitle      = $obTitleWhere->jobTitle;
-        $employer      = $employerWhere->employer;
-        $other = $otherWhere->employerOther;
+            $jobTitle      = $obTitleWhere->jobTitle;
+            $employer      = $employerWhere->employer;
+            $other = $otherWhere->employerOther;
 
-        $datas = ["name" => $name, "idNat" => $idNat, "jobTitle" => $jobTitle, "employer" => $employer, "other" => $other];
-        //dd($datas);        exit;
-        return view('secondments.secondment')
-            ->with('dataOne', $request)
-            ->with('datas', $datas);
+            $datas = ["name" => $name, "idNat" => $idNat, "jobTitle" => $jobTitle, "employer" => $employer, "other" => $other, "year" => $year, "secondment" => $secondment, "ok" => 1];
+            //dd($datas);        exit;  
+            return view('secondments.secondment')
+                ->with('dataOne', $request)
+                ->with('datas', $datas);
+        } else {
+            $ok = 0;
+            $datas = ["ok" => $ok];
+            return view('secondments.secondment')->with('datas', $datas);
+        }
     }
 
     /**
