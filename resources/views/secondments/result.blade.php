@@ -7,15 +7,18 @@
             <a class="nav-link " href="{{route('secondment.add')}}">اضافة</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="{{route('secondment.index')}}">عرض</a>
+            <a class="nav-link " href="{{route('secondment.index')}}">عرض</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{route('secondment.search')}}">بحث</a>
+            <a class="nav-link active" href="{{route('secondment.search')}}">بحث</a>
         </li>
 
     </ul>
 </div>
+
+
 <div class="container-fluid text-justify border p-3">
+
     <div class="row">
         <div class="col-2">
             <br />
@@ -56,23 +59,18 @@
                         @endif
                     </td>
                     <td>
-                        <form class="float-left" action="{{ route('secondment.destroy',$secondment->id) }}" method="POST">
+                        <form class="float-left" action="{{ route('secondment.view',$secondment->id) }}" method="POST">
                             @csrf
-                            @method('DELETE')
                             <button class="btn btn-md mr-2" style="color: #666666">
-                                <li class="fa fa-trash"></li> حذف
+                                <li class="fa fa-eye"></li> عرض
                             </button>
                         </form>
-
-                        <a href="{{ route('secondment.edit',$secondment->id) }}" class="btn float-left btn-md " class="btn btn-md float-left " style="color: #666666">
-                            <li class="fa fa-edit"></li> تعديل
-                        </a>
-
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+</div>
 
-    @endsection
+@endsection

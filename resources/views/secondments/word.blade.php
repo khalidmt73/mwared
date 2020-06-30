@@ -1,9 +1,37 @@
+<?php
+$export_file = "my_name.doc";
+ob_end_clean();
+ini_set('zlib.output_compression', 'Off');
+header('Pragma: public');
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");                  // Date in the past    
+header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+header('Cache-Control: no-store, no-cache, must-revalidate');     // HTTP/1.1 
+header('Cache-Control: pre-check=0, post-check=0, max-age=0');    // HTTP/1.1 
+header("Pragma: no-cache");
+header("Expires: 0");
+header('Content-Transfer-Encoding: none');
+header('Content-Type: application/vnd.ms-word;');                 // This should work for IE & Opera 
+header("Content-type: application/x-msword");                    // This should work for the rest 
+header('Content-Disposition: attachment; filename="' . basename($export_file) . '"');
+?>
 @extends('layouts.app')
 
 @section('content')
+<div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link " href="{{route('secondment.add')}}">اضافة</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{{route('secondment.index')}}">عرض</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{{route('secondment.search')}}">بحث</a>
+        </li>
 
+    </ul>
+</div>
 <div class="container-fluid text-justify border p-3">
-    @if ($datas['ok'] == 1)
     <form action="{{route('secondment.index') }}" method="POST">
         @csrf
 
@@ -11,7 +39,7 @@
             <div class="col-2 ">
 
                 <button class="btn btn-success mt-3">
-                    حفظ
+                    طباعه
                 </button>
 
             </div>
@@ -52,9 +80,9 @@
             - وبناءً على خطاب
             معالي رئيس {{ $datas['other'] }}
             رقم
-            <input type="text" class="" name="noOther" placeholder="">
+            {{ $datas['noOther'] }}
             وتاريخ
-            <input type="text" class="" name="dateOther" placeholder="">
+            {{ $datas['dateOther'] }}
             ، المتضمن حاجة الجامعة
             @if ( $datas['secondment'] == 1 ) تجديد اعارة
             @else
@@ -67,22 +95,22 @@
             عامين
             @endif
             اعتباراً من تاريخ
-            <input type="text" class="mt-2" name="dateSecondment" placeholder="">
+            {{ $datas['dateSecondment'] }}
             <br />
             - وبناءً على قرار مجلس الجامعة رقم
-            <input type="text" class="mt-3" name="onCouncil" placeholder="">
+            {{ $datas['onCouncil'] }}
             ، بموجب خطاب فضيلة المستشار أمين عام مجلس الجامعة رقم
-            <input type="text" class="mt-2" name="onSecretary" placeholder="">
+            {{ $datas['onSecretary'] }}
             وتاريخ
-            <input type="text" class="" name="dateSecretary" placeholder="">
+            {{ $datas['dateSecretary'] }}
             ، المبني على خطاب سعادة عميد كلية
             {{ $datas['employer'] }}
             رقم
-            <input type="text" class="" name="onCollege" placeholder="بدون">
+            {{ $datas['onCollege'] }}
             وتاريخ
-            <input type="text" class="mt-3" name="dateCollege" placeholder="بدون">
+            {{ $datas['dateCollege'] }}
             ،المتضمن توصية مجلس الكلية بالموافقة على توصية مجلس قسم
-            <input type="text" class="mt-3" name="college_id" placeholder="">
+            {{ $datas['college_id'] }}
 
             على
             @if ( $datas['secondment'] == 1 ) تجديد اعارة
@@ -97,7 +125,7 @@
             عامين
             @endif
             اعتباراً من
-            <input type="text" class="mt-3" name="dateSec1" id="dateSec1" placeholder="">
+            {{ $datas['dateSecondment'] }}
             <br />
             - واستناداً للمواد (75،74،73،72،71،70) من اللائحة المنظمة لشؤون منسوبي الجامعات السعوديين من أعضاء هيئة التدريس ومن في حكمهم.
             <br />
@@ -120,7 +148,7 @@
             عامين
             @endif
             اعتباراً من تاريخ
-            <input type="text" class="mt-3" name="dateSec2" id="dateSec2" placeholder="">
+            {{ $datas['dateSecondment'] }}
 
             <br />
 
@@ -151,28 +179,12 @@
             - الرواتب والنفقات - التوظيف - السجلات – إدارة المراجعة الداخلية- قسم التدقيق الداخلي. <br />
 
         </div>
-        <input type="hidden" class="mt-3" value=" {{$datas['idEmp']}}" name="idEmp">
-        <input type="hidden" class="mt-3" value=" {{$datas['otherid']}}" name="employerOther_id">
-        <input type="hidden" class="mt-3" value=" {{$datas['secondment']}}" name="typeSecondment">
-        <input type="hidden" class="mt-3" value=" {{$datas['year']}}" name="year">
+
     </form>
 
-    @else
-    <div class="text-center">
-        رقم الموظف غير صحيح
-    </div>
-    @endif
+
+
 </div>
 
-<script>
-    $(document).ready(function() {
-        $("#dateSecondment").keyup(function() {
-            $("#dateSec1").val($("#dateSecondment").val());
-            $("#dateSec2").val($("#dateSecondment").val());
-
-        });
-
-    });
-</script>
 
 @endsection

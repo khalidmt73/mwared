@@ -26,10 +26,16 @@ Route::group(['middleware' => 'admin'], function () {
 
 
 Route::group(['middleware' => 'auth'], function () {
+
     Route::resource('/secondment', 'SecondmentController');
-    Route::get('/secondment.search', 'SecondmentController@search')->name('secondment.search');
+    Route::get('/secondment.add', 'SecondmentController@add')->name('secondment.add');
     Route::POST('/secondmentForm', 'SecondmentController@secondment')->name('secondmentForm');
-    Route::get('/secondment.view', 'SecondmentController@view')->name('secondment.view');
+    Route::get('/secondment.search', 'SecondmentController@search')->name('secondment.search');
+    Route::POST('/secondment.result', 'SecondmentController@result')->name('secondment.result');
+    Route::POST('/secondment.result', 'SecondmentController@result')->name('secondment.result');
+    Route::POST('/secondment.view{id}', 'SecondmentController@view')->name('secondment.view');
+    Route::POST('/secondment.word{id}', 'SecondmentController@word')->name('secondment.word');
+
     Route::resource('/employee', 'EmployeeController');
     Route::resource('/employerOther', 'EmployerOtherController');
     Route::resource('/employer', 'EmployerController');

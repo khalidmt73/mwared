@@ -9,7 +9,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('secondment.index')}}">عرض</a>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link " href="{{route('secondment.search')}}">بحث</a>
+        </li>
     </ul>
 </div>
 <div class="container-fluid text-justify border p-3">
