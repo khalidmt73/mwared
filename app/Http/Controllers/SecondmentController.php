@@ -88,8 +88,12 @@ class SecondmentController extends Controller
 
     public function word($idEmp)
     {
-        $dataEmp  = Secondment::find($idEmp);
+
+        $dataEmp  = Secondment::where('idEmp', $idEmp)->first();
+
+
         $idEmp = $dataEmp->idEmp;
+
         $year = $dataEmp->year;
         $secondment = $dataEmp->typeSecondment;
         $employerOther = $dataEmp->employerOther_id;

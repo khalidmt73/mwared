@@ -1,4 +1,22 @@
 
+.sidebar{
+
+  background-color: blueviolet;
+  height: 100%;
+  z-index:3 ;
+}
+.content{
+  z-index:2 ;
+  position: relative;
+  top: 25px;
+  right: 20px;
+}
+
+.navbar{
+  z-index:4 ;
+
+}
+
  .profile img{
   width: 30px;
   height: 30px;

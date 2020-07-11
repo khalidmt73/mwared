@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::POST('/secondment.result', 'SecondmentController@result')->name('secondment.result');
     Route::POST('/secondment.result', 'SecondmentController@result')->name('secondment.result');
     Route::POST('/secondment.view{id}', 'SecondmentController@view')->name('secondment.view');
-    Route::POST('/secondment.word{id}', 'SecondmentController@word')->name('secondment.word');
+    Route::GET('/secondment.word{id}', 'SecondmentController@word')->name('secondment.word');
 
     Route::resource('/employee', 'EmployeeController');
     Route::resource('/employerOther', 'EmployerOtherController');

@@ -25,7 +25,7 @@
                 <a class=" mr-1">
                     <li class="fa fa-print fa-lg"></li> طباعه
                 </a>
-                <a class=" mr-2">
+                <a href="{{route('secondment.word',$datas['idEmp'])}}" class=" mr-2">
                     <li class="fa fa-file-word fa-lg"></li> word
                 </a>
             </div>
@@ -62,7 +62,7 @@
             - بناءً على الصلاحيات الممنوحة له نظاماً.
             <br />
         </span>
-        <div class="form-group mx-sm-3 mb-2">
+        <div class=" form-group mx-sm-3 mb-2">
             - وبناءً على خطاب
             معالي رئيس {{ $datas['other'] }}
             رقم

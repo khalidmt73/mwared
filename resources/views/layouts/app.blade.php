@@ -88,14 +88,15 @@
 
     </nav>
 
+
     <div class="container-fluid text-right w-75 content">
-        @auth
-
-        @yield('content')
-
-        @else
-        @yield('content')
-        @endauth
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-11">
+                @yield('content')
+            </div>
+        </div>
     </div>
 </body>
 
